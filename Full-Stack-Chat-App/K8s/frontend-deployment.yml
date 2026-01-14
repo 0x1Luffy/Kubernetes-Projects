@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: chatapp-frontend
-        image: 0x1luffy/chatapp-frontend:latest
+        image: 0x1luffy/3-tier-chat-app-kops:frontend-v1
         ports:
         - containerPort: 80
         env:
