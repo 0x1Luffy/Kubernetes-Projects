@@ -1,6 +1,6 @@
 services:
   backend:
-    image: iemafzal/backend:v1
+    image: 0x1luffy/3-tier-chat-app-kops:backend-v1
     container_name: backend
     ports:
       - "5001:5001"
@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
 
   frontend:
-    image: iemafzal/frontend:v1
+    image: 0x1luffy/3-tier-chat-app-kops:frontend-v1
     ports:
       - "8080:80"
     depends_on:
