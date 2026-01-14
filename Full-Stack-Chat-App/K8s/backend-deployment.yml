@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: chatapp-backend
-        image: 0x1luffy/chatapp-backend:latest
+        image: 0x1luffy/3-tier-chat-app-kops:backend-v1
         ports:
         - containerPort: 5001
         env:
