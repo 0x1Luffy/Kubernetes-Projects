@@ -55,7 +55,8 @@ pipeline {
           sh """
             sed -i 's|backend-__IMAGE_TAG__|backend-${IMAGE_TAG}|g' K8s/backend-deployment.yml
             sed -i 's|frontend-__IMAGE_TAG__|frontend-${IMAGE_TAG}|g' K8s/frontend-deployment.yml
-
+            
+            kubectl apply -f K8s/namespace.yml
             kubectl apply -f K8s/ -n ${KUBE_NS}
 
             kubectl rollout status deployment/backend -n ${KUBE_NS}
