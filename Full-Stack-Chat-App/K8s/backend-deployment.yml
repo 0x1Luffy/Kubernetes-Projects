@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: chatapp-backend
-        image: image: 0x1luffy/3-tier-chat-app-kops:backend-__IMAGE_TAG__
+        image: "image: 0x1luffy/3-tier-chat-app-kops:backend-__IMAGE_TAG__"
         ports:
         - containerPort: 5001
         env:
