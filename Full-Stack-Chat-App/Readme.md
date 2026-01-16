@@ -1,218 +1,117 @@
-# Full Stack Chatapp
+# 🚀 Full Stack Chat App – Kubernetes + CI/CD
 
-## 📝 Introduction:
+A production-style **Full Stack Chat Application** deployed on **Kubernetes (kOps)** with **Jenkins CI/CD**, **MongoDB Atlas**, and **Uptime Kuma monitoring**.
 
-This project aims to provide a real-time chat experience that's both scalable and secure. With a focus on modern technologies, we're building an application that's easy to use and maintain.
+---
 
-## Detailed Workflow Description:
+## 🧱 Infra
 
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/f845a188-8e70-42f7-8577-30af38e83053" alt="workflow"/>
-</div>
 
-- **User Interaction:**
+<img width="1919" height="599" alt="image" src="https://github.com/user-attachments/assets/7073db80-1720-40ee-bd18-ac0b7d6b097c" />
 
-  - Users interact with the frontend application running in their browser. This includes actions like logging in, sending messages, and navigating through the chat interface.Frontend (React App):The frontend is responsible for rendering the user interface and handling user inputs.It communicates with the backend via HTTP requests (for RESTful APIs) and WebSocket connections (for real-time interactions).
+<img width="1376" height="378" alt="image" src="https://github.com/user-attachments/assets/04f92d33-b117-4690-8b9a-508c1f20fab1" />
 
-- **Backend (Node.js/Express + Socket.io):**
+<img width="1918" height="986" alt="image" src="https://github.com/user-attachments/assets/6acf6f3b-b0a0-4b10-a739-24d663bcd463" />
 
-  - The backend handles all the server-side logic.It processes API requests from the frontend to perform actions such as user authentication, message retrieval, and message storage.Socket.io is used to manage real-time bi-directional communication between the frontend and the backend. This allows for instant messaging features, such as showing when users are typing or when new messages are sent.
+<img width="1919" height="1008" alt="image" src="https://github.com/user-attachments/assets/22e424c2-7928-4031-94dd-4961c9f51613" />
 
-- **MongoDB (Database):**
-  - MongoDB stores all persistent data for the application, including user profiles, chat messages, and any other relevant data.The backend interacts with MongoDB to retrieve, add, update, or delete data based on the requests it receives from the frontend.
 
-## ✨ Features:
 
-- **Real-time Messaging**: Send and receive messages instantly using Socket.io
-- **User Authentication & Authorization**: Securely manage user access with JWT
-- **Scalable & Secure Architecture**: Built to handle large volumes of traffic and data
-- **Modern UI Design**: A user-friendly interface crafted with React and TailwindCSS
-- **Profile Management**: Users can upload and update their profile pictures
-- **Online Status**: View real-time online/offline status of users
 
-## 🛠️ Tech Stack:
 
-- **Backend:** Node.js, Express, MongoDB, Socket.io
-- **Frontend:** React, TailwindCSS
-- **Containerization:** Docker
-- **Orchestration:** Kubernetes (planned)
-- **Web Server:** Nginx
-- **State Management:** Zustand
-- **Authentication:** JWT
-- **Styling Components:** DaisyUI
+🚀 Fully containerized • ☸ Kubernetes managed • 🔁 Auto-deployed
 
-## 🔧 Prerequisites:
+---
 
-- **[Node.js](https://nodejs.org/)** (v14 or higher)
-- **[Docker](https://www.docker.com/get-started)** (for containerizing the app)
-- **[Git](https://git-scm.com/downloads)** (to clone the repository)
+## 🛠 Tech Stack
 
-## 📝 Setup .env File:
+- Frontend: React, Vite, Nginx
+- Backend: Node.js, Express
+- Database: MongoDB Atlas
+- Containers: Docker
+- Orchestration: Kubernetes (kOps on AWS)
+- CI/CD: Jenkins
+- Monitoring: Uptime Kuma
 
-1. Navigate to the `backend` directory:
+---
 
-```bash
-cd backend
-```
-
-2. Create a `.env` file and add the following content (modify the values as needed):
-
-```env
-MONGODB_URI=mongodb://mongoadmin:secret@mongodb:27017/dbname?authSource=admin
-JWT_SECRET=your_jwt_secret_key
-PORT=5001
-```
-
-> **Note:** Replace `your_jwt_secret_key` with a strong secret key of your choice.
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/iemafzalhassan/full-stack_chatApp.git
-```
-
-## 🏗️ Build and Run the Application"
-
-Follow these steps to build and run the application:
-
-1. Build & Run the Containers:
-
-```bash
-cd full-stack_chatApp
-```
-
-```bash
-docker-compose up -d --build
-```
-
-2. Access the application in your browser:
+## 📂 Repository Structure
 
 ```
-http://localhost
+Kubernetes-Projects/
+└── Full-Stack-Chat-App/
+    ├── frontend/
+    ├── backend/
+    ├── K8s/
+    ├── Jenkinsfile
+    └── docker-compose.yml
 ```
 
 ---
 
-## 🛠️ Getting Started
+## 🔄 CI/CD Pipeline (Jenkins)
 
-Follow these simple steps to get the project up and running on your local Host using docker.
+On every **push to `master`**:
 
-```bash
-git clone https://github.com/iemafzalhassan/full-stack_chatApp.git
+```
+GitHub Push
+   ↓
+Jenkins Webhook Trigger
+   ↓
+Docker Build (Frontend + Backend)
+   ↓
+Docker Hub Push
+   ↓
+kubectl apply (kOps Cluster)
 ```
 
-```bash
-cd full-stack_chatApp
-```
-
-## Create a Docker network:
-
-```bash
-docker network create full-stack
-```
-
-## 🛠️ Building the Frontend
-
-```bash
-cd frontend
-```
-
-```bash
-docker build -t full-stack_frontend .
-```
-
-### Run the Frontend container:
-
-```bash
-docker run -d --network=full-stack  -p 5173:5173 --name frontend full-stack_frontend:latest
-```
-
-#### The frontend will now be accessible on port 5173.
-
-### Run the MongoDB Container:
-
-```bash
-docker run -d -p 27017:27017 --name mongo mongo:latest
-```
+✔ Fully automated  
+✔ Zero manual deployment  
 
 ---
 
-## 🛠️ Building the Backend
+## ☸ Kubernetes Deployment
 
-```bash
-cd backend
-```
-
-### Build the Backend image:
-
-```bash
-docker build -t full-stack_backend .
-```
-
-### Run the Backend container:
-
-```bash
-docker run -d --network=full-stack --add-host=host.docker.internal:host-gateway -p 5001:5001 --env-file .env full-stack_backend
-
-```
-
-#### This will build and run the backend container, exposing the backendAPI on port 5001.
-
-`Backend API: http://localhost:5001`
-
-### To Verify the conncetion between backend and databse:
-
-```bash
-docker-compose logs -f
-```
-
-### Once the backend and frontend containers are running, you can access the application in your browser:
-
-`Frontend: http://localhost`
-
-You can now interact with the real-time chat app and start messaging!
+- Separate **Deployments** for frontend & backend
+- **Services** for internal communication
+- **Ingress / LoadBalancer** for public access
+- **Secrets** for MongoDB Atlas connection
+- Cluster managed using **kOps**
 
 ---
 
-### 🤝 Contributing
+## 📡 Monitoring – Uptime Kuma
 
-We welcome contributions from DevOps & Developer of all skill levels! Here's how you can contribute:
+Uptime Kuma continuously monitors:
 
-**Report bugs:** If you encounter any bugs or issues, please open an issue with detailed information.
-**Suggest features:** Have an idea for a new feature? Open an issue to discuss it with the community.
-**Submit pull requests:** If you have a fix or a feature you'd like to contribute, submit a pull request. Ensure your changes pass any linting or tests, if applicable.
+- 🌐 Frontend availability
+- ⚙️ Backend health
+- ⏱ Response time & downtime
 
-### 🌐 Join the Community
-
-We invite you to join our community of developers and contributors. Let's work together to build an amazing real-time chat application!
-
-- **Star this repository** to show your support
-- **Fork this repository** to contribute to the project
-- **Open an issue** to report bugs or suggest features
-- **Submit a pull request** to contribute code changes
-
-## 🔮 Future Plans
-
-This project is evolving, and here are a few exciting things on the horizon:
-
-- [x] **CI/CD Pipelines:** Implement Continuous Integration and Continuous Deployment pipelines to automate testing and deployment.
-- [x] **Kubernetes (K8s):** Add Kubernetes manifests for container orchestration to deploy the app on cloud platforms like AWS, GCP, or Azure.
-- [x] **Feature Expansion:** Add more features like group chats, media sharing, and user status updates.
-- **Stay tuned for updates as we continue to improve and expand this project!**
+Provides real-time alerts and uptime dashboard.
 
 ---
 
-## 📚 Project Snapshots:
+## 🌍 Access
 
-![Settings](frontend/public/settings.png)
+- Application exposed via **Kubernetes LoadBalancer / Ingress**
+- Public endpoint monitored by **Uptime Kuma**
 
-![chat](frontend/public/chat.png)
+---
 
-![logout](/frontend/public/logout.png)
+## ✅ Key Highlights
 
-![Login](/frontend/public/login.png)
+- Real-world Kubernetes deployment
+- Jenkins CI/CD with GitHub Webhooks
+- Secure cloud database (MongoDB Atlas)
+- Monitoring with Uptime Kuma
+- Production-ready DevOps workflow
 
-## 📜 License
+---
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
-testing the pipeline test no 5 [Ignore]
+## 📌 Future Enhancements
+
+- HTTPS (cert-manager)
+- HPA (Auto Scaling)
+- Prometheus + Grafana
+- Blue-Green deployments
