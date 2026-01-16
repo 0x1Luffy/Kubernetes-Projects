@@ -2,6 +2,9 @@
 
 A production-style **Full Stack Chat Application** deployed on **Kubernetes (kOps)** with **Jenkins CI/CD**, **MongoDB Atlas**, and **Uptime Kuma monitoring**.
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4527f73d-0d08-4987-86c7-80274aebcd98" />
+
+
 ---
 
 ## 🧱 Infra
