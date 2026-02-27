@@ -1,12 +1,7 @@
-# Kubernetes Projects 🚀
-
-This repository contains **hands-on Kubernetes projects** focused on deploying real-world applications using cloud-native best practices.
-
----
 
 ## 📌 Current Deployments
 
-### ✅ Full Stack Chat Application (Deployed)
+### ✅ Full Stack Chat Application (WIP)
 - MERN-based real-time chat application
 - Deployed on Kubernetes cluster
 - Includes:
@@ -19,26 +14,6 @@ This repository contains **hands-on Kubernetes projects** focused on deploying r
 
 ---
 
-## 🚧 Work in Progress
-
-### 🛒 Shopping Application
-- MERN-based shopping cart application
-- Kubernetes deployment **currently under development**
-- Upcoming additions:
-  - Complete K8s manifests
-  - Horizontal Pod Autoscaler (HPA)
-  - Production-ready configs
-
-📁 Path: `Shopping-App/`
-
----
-
-## 🎯 Goal of This Repository
-- Practice **real-world Kubernetes deployments**
-- Showcase **DevOps & Cloud-Native skills**
-- Build end-to-end deployable applications
-
----
 
 ## 🛠 Tech Stack
 - Kubernetes (Kind / EKS)
@@ -46,6 +21,7 @@ This repository contains **hands-on Kubernetes projects** focused on deploying r
 - MERN Stack
 - Jenkins (CI/CD)
 - AWS
+- Oracle OCI
 
 ---
 
