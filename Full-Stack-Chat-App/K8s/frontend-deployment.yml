@@ -1,3 +1,4 @@
+# frontend-deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +16,7 @@ spec:
     spec:
       containers:
       - name: chatapp-frontend
-        image: "0x1luffy/3-tier-chat-app-kops:frontend-__IMAGE_TAG__"
+        image: "0x1luffy/3-tier-chat-app-kops:frontend-v1"
         ports:
         - containerPort: 80
         env:
