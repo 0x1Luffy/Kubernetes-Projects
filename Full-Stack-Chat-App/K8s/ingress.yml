@@ -1,21 +1,22 @@
+# ingress.yml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: chatapp-ingress
   namespace: chat-app
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.entrypoints: "web,websecure"
 spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - chetancodes.dpdns.org
+    secretName: chatapp-tls
   rules:
   - host: chetancodes.dpdns.org
     http:
       paths:
-      - path: /api/v1
-        pathType: Prefix
-        backend:
-          service:
-            name: backend
-            port:
-              number: 5001
-
       - path: /
         pathType: Prefix
         backend:
