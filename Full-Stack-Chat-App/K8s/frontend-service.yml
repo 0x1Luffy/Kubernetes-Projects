@@ -1,12 +1,12 @@
+# frontend-service.yml
 apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
   namespace: chat-app
 spec:
-  type: LoadBalancer
   selector:
     app: frontend
   ports:
-    - port: 80
-      targetPort: 80
+  - port: 80
+    targetPort: 80
